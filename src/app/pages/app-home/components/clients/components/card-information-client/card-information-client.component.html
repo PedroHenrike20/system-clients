@@ -2,9 +2,9 @@
   [ngClass]="{ 'card-container__selected': isSelected }"
   class="card-container"
 >
-  <h3>{{ client.name }}</h3>
-  <h4>Salário: {{ client.salary | currency : "BRL" }}</h4>
-  <h4>Empresa: {{ client.companyValuation | currency : "BRL" }}</h4>
+  <h3 [pTooltip]="client.name">{{ client.name }}</h3>
+  <h4 pTooltip="{{client.salary | currency : 'BRL'}}">Salário: {{ client.salary | currency : "BRL" }}</h4>
+  <h4 pTooltip="{{client.companyValuation | currency : 'BRL'}}">Empresa: {{ client.companyValuation | currency : "BRL" }}</h4>
 
   <div *ngIf="!submenuClientSelected; else containerMenuSelected" class="card-container__container-actions">
       <button (click)="onSelect.emit()" class="button-card" pButton>

@@ -49,9 +49,25 @@
   }
 }
 
+@media (max-width: 670px) {
+  ::ng-deep .p-dialog {
+    width: 90%;
+  }
+  
+  .container-modal-dialog {
+    &__container-inputs {
+      width: 100%;
+    }
+    &__content {
+      width: 100%;
+      min-width: 100%;
+    }
+  }
+}
+
 ::ng-deep .p-element .p-inputwrapper {
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
 }
 
 ::ng-deep .p-inputtext {

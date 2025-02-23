@@ -16,7 +16,6 @@ export class ClientsComponent {
   ngOnInit() {
     this.buttonClickSubscription = this.headerService.buttonClicked$.subscribe(
       (buttonId) => {
-        console.log(buttonId);
         if (buttonId !== 'clients') {
           this.showListClients = false;
         } else {

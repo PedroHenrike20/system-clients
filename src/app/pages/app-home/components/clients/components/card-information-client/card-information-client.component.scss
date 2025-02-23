@@ -14,15 +14,22 @@
     background-color: #ffd4be;
   }
 
+
+  h3, h4 {
+    font-family: "Inter", sans-serif;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    max-width: 100%;
+  }
+  
   h3 {
     font-size: 1rem;
-    font-family: "Inter", sans-serif;
     font-weight: 700;
   }
-
-  h4 {
+  
+  h4{
     font-size: 0.875rem;
-    font-family: "Inter", sans-serif;
     font-weight: 400;
   }
 
@@ -33,7 +40,7 @@
     justify-content: space-between;
     margin-top: 5px;
 
-    &__right{
+    &__right {
       align-self: end;
     }
   }
@@ -61,14 +68,14 @@
 }
 
 @media (max-width: 560px) {
-  .card-container  {
+  .card-container {
     width: 100%;
     max-width: 100%;
   }
 }
 
 @media (max-width: 760px) {
-  .card-container  {
+  .card-container {
     width: 100%;
     max-width: 100%;
   }

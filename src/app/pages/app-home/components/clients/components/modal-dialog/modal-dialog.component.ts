@@ -50,7 +50,6 @@ export class ModalDialogComponent implements OnInit, OnChanges {
     if (changes['client'] && changes['client'].currentValue) {
       this.isEditing = true;
       this.clientDTO = { ...changes['client'].currentValue };
-      console.log(this.clientDTO);
       this.form.patchValue(this.clientDTO);
     } else {
       this.isEditing = false;
@@ -69,7 +68,6 @@ export class ModalDialogComponent implements OnInit, OnChanges {
       return;
     }
     this.clientDTO = { ...this.form.value, id: this.clientDTO.id };
-    console.log(this.clientDTO);
     this.onConfirm.emit(this.clientDTO);
   }
 

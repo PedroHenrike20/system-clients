@@ -29,7 +29,7 @@
     [rows]="reqClients.limit"
     [totalRecords]="totalRecords"
     (onPageChange)="onPageChange($event)"
-    [first]="reqClients.page * reqClients.limit"
+    [first]="(reqClients.page - 1) * reqClients.limit"
   >
   </p-paginator>
 </div>

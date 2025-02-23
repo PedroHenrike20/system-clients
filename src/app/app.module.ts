@@ -16,6 +16,7 @@ import { DropdownModule } from 'primeng/dropdown';
 import { PaginatorModule } from 'primeng/paginator';
 import { ToastModule } from 'primeng/toast';
 import { DialogModule } from 'primeng/dialog';
+import { TooltipModule } from 'primeng/tooltip';
 
 
 import { AppLoginComponent } from './pages/app-login/app-login.component';
@@ -62,7 +63,8 @@ registerLocaleData(localePt, 'pt-BR');
     DropdownModule,
     PaginatorModule,
     ToastModule,
-    DialogModule
+    DialogModule,
+    TooltipModule
   ],
   providers: [ClientService, MessageService,
     { provide: LOCALE_ID, useValue: 'pt-BR' },

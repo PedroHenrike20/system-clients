@@ -32,7 +32,6 @@ export class AppHomeComponent {
 
   onButtonClick(buttonId: 'clients' | 'client_selected') {
     this.menuSelected = buttonId;
-    console.log(this.activeMenu)
     this.headerService.triggerButtonClick(buttonId);
   }
 

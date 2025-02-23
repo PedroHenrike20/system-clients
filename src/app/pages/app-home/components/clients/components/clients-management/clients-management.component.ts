@@ -11,9 +11,7 @@ import { SelectionService } from '../../services/selection-service/selection.ser
 })
 export class ClientsManagementComponent {
   clients: ClientDTO[] = [];
-  totalPages: number = 0;
   totalRecords: number = 0;
-  resetPaginator: number = 1;
   reqClients: ReqClientListDTO = {
     limit: 10,
     page: 1,
@@ -43,10 +41,7 @@ export class ClientsManagementComponent {
     this.clientService.getClients(this.reqClients).subscribe({
       next: (response) => {
         this.clients = response.clients;
-        this.totalPages = response.totalPages;
-        this.reqClients.page = response.currentPage - 1;
-
-        this.totalRecords = this.totalPages * this.reqClients.limit;
+        this.totalRecords = response.totalPages * this.reqClients.limit;
 
         console.log(this.reqClients);
       },
@@ -58,6 +53,20 @@ export class ClientsManagementComponent {
         });
       },
     });
+  }
+
+  onLimitChange(event: { value: number }) {
+    this.reqClients.limit = event.value;
+    this.reqClients.page = 1;
+
+    this.getClients();
+  }
+
+  onPageChange(event: any) {
+    const page = event.page;
+    this.reqClients.page = page + 1;
+    this.reqClients.limit = event.rows;
+    this.getClients();
   }
 
   toggleSelectionClient(item: ClientDTO) {
@@ -175,28 +184,5 @@ export class ClientsManagementComponent {
         });
       },
     });
-  }
-
-  onLimitChange(event: { value: number }) {
-    this.reqClients.limit = event.value;
-    const totalPages = Math.ceil(
-      (this.totalPages * this.reqClients.limit) / event.value
-    );
-    if (this.reqClients.page >= totalPages) {
-      this.reqClients.page = totalPages - 1;
-    }
-
-    this.getClients();
-  }
-
-  onPageChange(event: any) {
-    console.log({ event });
-    const page = event.page;
-
-    if (page !== this.reqClients.page) {
-      this.reqClients.page = page;
-      this.reqClients.limit = event.rows;
-      this.getClients();
-    }
   }
 }

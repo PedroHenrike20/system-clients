@@ -34,11 +34,9 @@ export class ClientService {
   deleteClient(id: number): Observable<string>{
     return this.http.delete<string>(`${this.apiUrl}/${id}`, ).pipe(
       map((response: any) => {
-        console.log('Resposta da API:', response); 
         return response || 'Usuário excluído com sucesso!';  
       }),
       catchError((error) => {
-        console.error('Erro ao tentar excluir:', error);
         if (error.status === 200) {
           return [];
         }
