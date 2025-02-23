@@ -1,0 +1,7 @@
+<div class="container-app-login">
+  <div class="container-app-login__content">
+    <h1>Olá, seja bem-vindo!</h1>
+    <input class="input-app-login" type="text" pInputText [(ngModel)]="loginModel.userName" placeholder="Digite o seu nome:" />
+    <button class="button-app-login" pButton label="Entrar" [disabled]="isActiveButtonLogin" (click)="login()"></button>
+  </div>
+</div>

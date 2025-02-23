@@ -1,0 +1,40 @@
+<div
+  [ngClass]="{ 'card-container__selected': isSelected }"
+  class="card-container"
+>
+  <h3>{{ client.name }}</h3>
+  <h4>Salário: {{ client.salary | currency : "BRL" }}</h4>
+  <h4>Empresa: {{ client.companyValuation | currency : "BRL" }}</h4>
+
+  <div *ngIf="!submenuClientSelected; else containerMenuSelected" class="card-container__container-actions">
+      <button (click)="onSelect.emit()" class="button-card" pButton>
+        <img
+          *ngIf="!isSelected"
+          [src]="'assets/icons/icon-plus.svg'"
+          alt="icon-plus"
+        />
+        <img
+          *ngIf="isSelected"
+          [src]="'assets/icons/icon-minus.svg'"
+          alt="icon-minus"
+        />
+      </button>
+      <button (click)="onEdit.emit()" class="button-card" pButton>
+        <img [src]="'assets/icons/icon-pencil.svg'" alt="icon-pencil" />
+      </button>
+      <button (click)="onDelete.emit()" class="button-card" pButton>
+        <img [src]="'assets/icons/icon-trash.svg'" alt="icon-trash" />
+      </button>
+  </div>
+  <ng-template #containerMenuSelected>
+    <div class="card-container__container-actions__right">
+      <button (click)="removeSelectionClient()" class="button-card" pButton>
+        <img
+          *ngIf="isSelected"
+          [src]="'assets/icons/icon-minus.svg'"
+          alt="icon-minus"
+        />
+      </button>
+    </div>
+  </ng-template>
+</div>

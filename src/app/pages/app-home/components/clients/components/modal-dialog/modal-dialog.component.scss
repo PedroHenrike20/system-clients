@@ -1,0 +1,86 @@
+.container-modal-dialog {
+  h3 {
+    color: #000000;
+    font-size: 1rem;
+    font-family: "Inter", sans-serif;
+    font-weight: 400;
+  }
+
+  &__content {
+    max-width: 400px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  &__container-inputs {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 400px;
+  }
+}
+
+.button-modal-dialog {
+  background-color: #ec6724;
+  border-radius: 4px;
+  color: #fff;
+  border: none;
+  width: 100%;
+  font-family: "Inter", sans-serif;
+  font-weight: 700;
+  font-size: 0.875rem;
+
+  &:hover {
+    background-color: #ec6724 !important;
+    color: #fff !important;
+  }
+
+  &:active {
+    outline: none;
+    box-shadow: none;
+    border: none;
+  }
+
+  &:focus {
+    outline: none;
+    box-shadow: none;
+    border: none;
+  }
+}
+
+::ng-deep .p-element .p-inputwrapper {
+    display: flex;
+    flex-direction: column;
+}
+
+::ng-deep .p-inputtext {
+  background-color: #d9d9d900;
+  border: solid 2px #d9d9d9;
+  display: flex !important;
+  flex-direction: column !important;
+
+  &:focus {
+    outline: none !important;
+    border: solid 1px #ec6724 !important;
+    box-shadow: none !important;
+  }
+
+  &:hover {
+    border: solid 1px #ec6724 !important;
+  }
+}
+
+::ng-deep .p-dialog .p-dialog-header {
+  color: #000000;
+  font-size: 1rem;
+  font-weight: 700;
+  font-family: "Inter", sans-serif;
+}
+
+::ng-deep .p-inputtext::placeholder {
+  color: #aaaaaa;
+  font-weight: 400;
+  font-family: "Inter", sans-serif;
+  font-size: 1rem;
+}

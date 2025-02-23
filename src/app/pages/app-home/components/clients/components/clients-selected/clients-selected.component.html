@@ -1,0 +1,12 @@
+<div class="clients-container-selected">
+  <h2>Clientes selecionados:</h2>
+  <div class="clients-container-selected__list">
+    <app-card-information-client
+      *ngFor="let client of selectedClients"
+      submenu="client_selected"
+      [client]="client"
+    ></app-card-information-client>
+  </div>
+  <h3 *ngIf="!visibleClearButton">Nenhum cliente selecionado!</h3>
+  <button *ngIf="visibleClearButton" class="button-clear-clients-selected" (click)="clearClientsSelected()" label="Limpar clientes selecionados" pButton></button>
+</div>

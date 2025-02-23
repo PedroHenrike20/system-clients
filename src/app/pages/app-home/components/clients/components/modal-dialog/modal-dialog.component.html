@@ -1,0 +1,48 @@
+<p-dialog
+  class="container-modal-dialog"
+  [header]="title"
+  [modal]="true"
+  [(visible)]="visible"
+  (onHide)="closeDialog()"
+>
+  <div class="container-modal-dialog__content">
+    <h3 *ngIf="actionType === 'delete'" [innerHTML]="content"></h3>
+    <form
+      *ngIf="actionType !== 'delete' && clientDTO"
+      class="container-modal-dialog__container-inputs"
+      [formGroup]="form"
+      (ngSubmit)="confirmAction()"
+    >
+      <input
+        type="text"
+        pInputText
+        placeholder="Digite o nome:"
+        formControlName="name"
+      />
+
+      <p-inputNumber
+        [mode]="'currency'"
+        [currency]="'BRL'"
+        [locale]="'pt-BR'"
+        placeholder="Digite o salário:"
+        formControlName="salary"
+      ></p-inputNumber>
+
+      <p-inputNumber
+        [mode]="'currency'"
+        [currency]="'BRL'"
+        [locale]="'pt-BR'"
+        placeholder="Digite o valor da empresa:"
+        formControlName="companyValuation"
+      ></p-inputNumber>
+    </form>
+
+    <button
+      class="button-modal-dialog"
+      (click)="confirmAction()"
+      [label]="confirmText"
+      pButton
+      [disabled]="actionType !== 'delete' && form.invalid"
+    ></button>
+  </div>
+</p-dialog>

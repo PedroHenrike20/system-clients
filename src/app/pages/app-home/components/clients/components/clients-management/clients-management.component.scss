@@ -1,0 +1,135 @@
+.clients-container-management {
+  &__header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+
+    h3 {
+      font-size: 1rem;
+      font-family: "Inter", sans-serif;
+      font-weight: 400;
+    }
+
+    span {
+      font-weight: 700;
+    }
+  }
+
+  &__pagination {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 9px;
+  }
+
+  &__list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    margin-top: 10px;
+    gap: 20px;
+    justify-content: start;
+  }
+}
+
+.button-create-client {
+  background-color: transparent;
+  border: 2px solid #ec6724;
+  color: #ec6724;
+  margin: 20px 0px;
+  width: 100%;
+  border-radius: 4px;
+
+  font-weight: 700;
+  font-family: "Inter", sans-serif;
+  font-size: 0.875rem;
+
+  &:active {
+    outline: none;
+    box-shadow: none;
+    border: none;
+  }
+
+  &:hover {
+    border: 2px solid #ec6724;
+    background-color: transparent;
+    color: #ec6724;
+  }
+
+  &:focus {
+    outline: none;
+    box-shadow: none;
+  }
+}
+
+::ng-deep .p-dropdown-label {
+  line-height: 16px !important;
+  padding: 4px 8px !important;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+::ng-deep .p-dropdown-trigger {
+  width: 20px !important;
+  height: 20px !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 14px 0px;
+}
+
+:host ::ng-deep .p-paginator .p-paginator-pages .p-paginator-page.p-highlight {
+  background-color: #ec6724; 
+  color: white; 
+}
+
+:host ::ng-deep .p-paginator .p-paginator-prev,
+:host ::ng-deep .p-paginator .p-paginator-next,
+:host ::ng-deep .p-paginator .p-paginator-last,
+:host ::ng-deep .p-paginator .p-paginator-first {
+  display: none;
+}
+
+
+
+:host ::ng-deep .p-paginator .p-paginator-pages .p-paginator-page {
+    font-size: 0.875rem;
+    font-weight: 700; 
+    color: #000000; 
+    font-family: 'Inter', sans-serif;
+  }
+
+::ng-deep .p-dropdown {
+  height: 30px;
+  width: 60px;
+
+  &:active {
+    outline: none !important;
+    border: solid 1px #ec6724 !important;
+    box-shadow: none !important;
+  }
+
+  &:hover {
+    outline: none !important;
+    border: solid 1px #ec6724 !important;
+    box-shadow: none !important;
+  }
+}
+
+::ng-deep .p-paginator {
+  background-color: transparent !important;
+  box-shadow: none !important;
+}
+
+::ng-deep .p-paginator .p-paginator-page {
+  font-size: 0.875rem;
+  color: #000000;
+  border-radius: 4px !important;
+}
+
+::ng-deep .p-paginator .p-paginator-page.p-highlight {
+  border-radius: 4px !important;
+  background-color: #ec6724;
+  color: #ffffff;
+}

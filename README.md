@@ -1,27 +1,71 @@
-# SystemClients
+# Cadastro de Clientes - Projeto em Angular
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.2.11.
+Este projeto é uma aplicação Angular desenvolvida na versão 15.2.11, utilizando PrimeNG para a interface e estruturada no formato de microfrontend. O projeto também suporta conteinerização com Docker.
 
-## Development server
+## Pré-requisitos
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+Certifique-se de ter os seguintes itens instalados em sua máquina:
 
-## Code scaffolding
+Node.js (versão recomendada: LTS)
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+Angular CLI
 
-## Build
+Docker
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+## Como rodar a aplicação
 
-## Running unit tests
+Rodando localmente (sem Docker)
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+1. Clone este repositório:
+`git clone`
 
-## Running end-to-end tests
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+2. Acesse o diretório do projeto:
+`cd projeto-clonado`
 
-## Further help
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+3. Instale as dependências:
+`npm install`
+
+
+4. Inicie o servidor de desenvolvimento:
+`ng serve`
+
+
+5. Acesse no navegador:
+`http://localhost:4200/`
+
+Rodando com Docker
+
+1. Construa a imagem Docker:
+`docker build -t meu-projeto-angular .`
+
+
+2. Execute o container:
+
+
+3. Acesse no navegador:
+`http://localhost:4200/`
+
+## Parando e removendo o container
+Caso precise parar e remover o container:
+
+# Parar o container
+`docker stop projeto-angular-container`
+
+# Remover o container
+`docker rm projeto-angular-container`
+
+## Construção e Deploy
+Se deseja gerar uma build otimizada para produção, utilize o seguinte comando:
+
+`ng build --prod`
+
+Para rodar a versão de produção localmente, utilize um servidor como o `http-server`:
+
+`npx http-server -p 8080 -c-1 dist/projeto`
+
+E acesse:
+`http://localhost:8080/`
+
+

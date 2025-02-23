@@ -1,0 +1,46 @@
+<p-toast></p-toast>
+
+<div class="clients-container-management">
+  <div class="clients-container-management__header">
+    <h3>
+      <span>{{ numberRecords }}</span> clientes encontrados:
+    </h3>
+    <div class="clients-container-management__pagination">
+      <h3>Clientes por página:</h3>
+      <p-dropdown
+        class="dropdown-numbers"
+        [options]="[10, 20, 50]"
+        (onChange)="onLimitChange($event)"
+      />
+    </div>
+  </div>
+  <div class="clients-container-management__list">
+    <app-card-information-client
+      *ngFor="let client of clients"
+      submenu="clients"
+      (onSelect)="toggleSelectionClient(client)"
+      (onDelete)="openDialog('delete', client)"
+      (onEdit)="openDialog('edit', client)"
+      [client]="client"
+    ></app-card-information-client>
+  </div>
+  <button class="button-create-client" pButton (click)="openDialog('create', null)" label="Criar cliente"></button>
+  <p-paginator
+    [rows]="reqClients.limit"
+    [totalRecords]="totalRecords"
+    (onPageChange)="onPageChange($event)"
+    [first]="reqClients.page * reqClients.limit"
+  >
+  </p-paginator>
+</div>
+
+<app-modal-dialog
+  (onConfirm)="confirmAction($event)"
+  [client]="clientSelected"
+  (onClose)="closeDialog($event)"
+  [title]="dialogTitle"
+  [visible]="dialogVisible"
+  [content]="dialogContent"
+  [confirmText]="confirmButtonText"
+  [actionType]="actionType"
+></app-modal-dialog>
