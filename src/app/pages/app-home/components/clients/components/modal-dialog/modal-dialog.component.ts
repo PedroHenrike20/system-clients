@@ -77,6 +77,6 @@ export class ModalDialogComponent implements OnInit, OnChanges {
 
   resetForm() {
     this.clientDTO = {};
-    this.form.reset();
+    this.form?.reset();
   }
 }

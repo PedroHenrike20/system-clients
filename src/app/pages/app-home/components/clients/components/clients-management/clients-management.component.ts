@@ -115,26 +115,16 @@ export class ClientsManagementComponent {
   deleteClient() {
     this.clientService.deleteClient(this.clientSelected!.id!).subscribe({
       next: (message) => {
-        console.log({ message });
         this.messageService.add({
           severity: 'success',
           summary: 'Sucesso',
           detail: 'Cliente excluído com sucesso!',
         });
         this.dialogVisible = false;
+        this.selectionService.removeIfDeleted(this.clientSelected?.id!);
         this.getClients();
       },
       error: (err) => {
-        console.log({ err });
-        if (err.error.status === 200) {
-          this.messageService.add({
-            severity: 'success',
-            summary: 'Sucesso',
-            detail: 'Cliente excluído com sucesso!',
-          });
-          this.dialogVisible = false;
-          this.getClients();
-        }
         this.messageService.add({
           severity: 'error',
           summary: 'Erro',

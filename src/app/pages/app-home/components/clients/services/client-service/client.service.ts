@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { catchError, map, Observable, throwError } from 'rxjs';
+import { catchError, map, Observable, of, throwError } from 'rxjs';
 import { ClientDTO, ReqClientListDTO, ResClientDTO } from '../../models/client.model';
 
 @Injectable({
@@ -13,7 +13,7 @@ export class ClientService {
   constructor(private http: HttpClient) { }
 
   getClients(req: ReqClientListDTO): Observable<ResClientDTO> {
-    return this.http.get<ResClientDTO>(`${this.apiUrl}?page=${req.page}&limit=${req.limit}`).pipe(
+    return this.http.get<ResClientDTO>(`${this.apiUrl}?page=${req.page}&limit=${req.limit}`, { headers: { 'Cache-Control': 'no-cache' }}).pipe(
       catchError((error) => {
         let errorMessage = 'Erro desconhecido ao buscar os clientes!';
         
@@ -31,14 +31,11 @@ export class ClientService {
     );
   }
 
-  deleteClient(id: number): Observable<string>{
-    return this.http.delete<string>(`${this.apiUrl}/${id}`, ).pipe(
-      map((response: any) => {
-        return response || 'Usuário excluído com sucesso!';  
-      }),
+  deleteClient(id: number): Observable<any>{
+    return this.http.delete<any>(`${this.apiUrl}/${id}`, ).pipe(
       catchError((error) => {
         if (error.status === 200) {
-          return [];
+          return of({ status: 200, message: 'O registro foi excluído, mas houve um problema ao processar a resposta.', data: [] });
         }
         let errorMessage = 'Erro desconhecido!';
         

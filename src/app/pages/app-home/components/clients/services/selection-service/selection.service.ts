@@ -33,4 +33,12 @@ export class SelectionService {
     this.selectedItemsSubject.next([]);
     this.selectedItemIds.clear();
   }
+
+  removeIfDeleted(deletedItemId: number) {
+    if (this.selectedItemIds.has(deletedItemId)) {
+      const updatedItems = this.selectedItemsSubject.getValue().filter(item => item.id !== deletedItemId);
+      this.selectedItemsSubject.next(updatedItems);
+      this.selectedItemIds.delete(deletedItemId);
+    }
+  }
 }
