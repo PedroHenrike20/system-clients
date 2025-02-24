@@ -69,6 +69,9 @@ Rodando com Docker Compose
 # Parar o container
 `docker-compose down`
 
+Obs.: Para rodar o projeto no docker, será necessário a configuração do proxy para o sistema poder se comunicar com o servidor corretamente!
+É recomendado rodar o projeto localmente, pois as configurações do proxy aplicada nesse projeto funciona apenas em ambiente de desenvolvimento.
+
 
 ## Construção e Deploy
 Se deseja gerar uma build otimizada para produção, utilize o seguinte comando:
@@ -81,5 +84,9 @@ Para rodar a versão de produção localmente, utilize um servidor como o `http-
 
 E acesse:
 `http://localhost:8080/`
+
+## Link do projeto na vercel
+- [Vercel](https://system-clients.vercel.app/)
+
 
 
