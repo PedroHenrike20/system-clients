@@ -8,7 +8,7 @@ import { ProductsComponent } from './pages/app-home/components/products/products
 import { ClientsComponent } from './pages/app-home/components/clients/clients.component';
 
 const routes: Routes = [
-  {path: 'login', component: AppLoginComponent},
+  {path: 'login', component: AppLoginComponent, canActivate: [AuthGuard]},
   {path: 'home',  component: AppHomeComponent, canActivate: [AuthGuard], children: [
     {path: '', component: HomeComponent,  },
     {path: 'products', component: ProductsComponent,  },
