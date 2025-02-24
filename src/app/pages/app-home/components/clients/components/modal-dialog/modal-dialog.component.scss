@@ -31,6 +31,9 @@
   font-weight: 700;
   font-size: 0.875rem;
 
+  display: flex;
+  flex-direction: row-reverse;
+
   &:hover {
     background-color: #ec6724 !important;
     color: #fff !important;

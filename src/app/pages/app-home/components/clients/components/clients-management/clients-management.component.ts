@@ -20,6 +20,8 @@ export class ClientsManagementComponent {
   dialogTitle = '';
   dialogContent = '';
   confirmButtonText = '';
+  isLoading: boolean = false;
+  isLoadingOperation: boolean = false;
   actionType!: 'delete' | 'edit' | 'create';
   clientSelected: ClientDTO | null = null;
 
@@ -38,12 +40,12 @@ export class ClientsManagementComponent {
   }
 
   getClients() {
+    this.isLoading = true;
     this.clientService.getClients(this.reqClients).subscribe({
       next: (response) => {
         this.clients = response.clients;
         this.totalRecords = response.totalPages * this.reqClients.limit;
-
-        console.log(this.reqClients);
+        this.isLoading = false;
       },
       error: (err) => {
         this.messageService.add({
@@ -51,6 +53,7 @@ export class ClientsManagementComponent {
           summary: 'Erro',
           detail: err.message || 'Erro ao carregar os clientes',
         });
+        this.isLoading = false;
       },
     });
   }
@@ -101,6 +104,7 @@ export class ClientsManagementComponent {
   }
 
   confirmAction(newData: Partial<ClientDTO> | null) {
+    this.isLoadingOperation = true;
     if (this.clientSelected) {
       if (this.actionType === 'delete') {
         this.deleteClient();
@@ -122,6 +126,7 @@ export class ClientsManagementComponent {
         });
         this.dialogVisible = false;
         this.selectionService.removeIfDeleted(this.clientSelected?.id!);
+        this.isLoadingOperation = false;
         this.getClients();
       },
       error: (err) => {
@@ -130,6 +135,7 @@ export class ClientsManagementComponent {
           summary: 'Erro',
           detail: err.message,
         });
+        this.isLoadingOperation = false;
       },
     });
   }
@@ -143,6 +149,7 @@ export class ClientsManagementComponent {
           detail: 'Cliente atualizado com sucesso!',
         });
         this.dialogVisible = false;
+        this.isLoadingOperation = false;
         this.getClients();
       },
       error: (err) => {
@@ -151,6 +158,7 @@ export class ClientsManagementComponent {
           summary: 'Erro',
           detail: err.message,
         });
+        this.isLoadingOperation = false;
       },
     });
   }
@@ -164,6 +172,7 @@ export class ClientsManagementComponent {
           detail: 'Cliente cadastrado com sucesso!',
         });
         this.dialogVisible = false;
+        this.isLoadingOperation = false;
         this.getClients();
       },
       error: (err) => {
@@ -172,6 +181,7 @@ export class ClientsManagementComponent {
           summary: 'Erro',
           detail: err.message,
         });
+        this.isLoadingOperation = false;
       },
     });
   }

@@ -18,6 +18,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 export class ModalDialogComponent implements OnInit, OnChanges {
   @Input() client: ClientDTO | null = null;
   @Input() visible: boolean = false;
+  @Input() isLoadingOperation: boolean = false;
   @Input() title: string = '';
   @Input() content: string = '';
   @Input() confirmText: string = '';
@@ -29,6 +30,14 @@ export class ModalDialogComponent implements OnInit, OnChanges {
   clientDTO: Partial<ClientDTO> = {};
   form!: FormGroup;
   isEditing: boolean = false;
+  isLoading: boolean = false;
+
+  get isDisabled(): boolean {
+    if(this.isLoading){
+      return true;
+    }
+    return this.actionType !== 'delete' && this.form.invalid;
+  }
 
   constructor(private fb: FormBuilder) {}
 
@@ -51,8 +60,11 @@ export class ModalDialogComponent implements OnInit, OnChanges {
       this.isEditing = true;
       this.clientDTO = { ...changes['client'].currentValue };
       this.form.patchValue(this.clientDTO);
+    }else if(changes['isLoadingOperation'] && changes['isLoadingOperation'].currentValue){
+      this.isLoading = changes['isLoadingOperation'].currentValue;
     } else {
       this.isEditing = false;
+      this.isLoading = false;
       this.resetForm();
     }
   }
@@ -77,6 +89,7 @@ export class ModalDialogComponent implements OnInit, OnChanges {
 
   resetForm() {
     this.clientDTO = {};
+    this.isLoading = false;
     this.form?.reset();
   }
 }

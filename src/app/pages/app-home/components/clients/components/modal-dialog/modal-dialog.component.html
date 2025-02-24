@@ -42,7 +42,12 @@
       (click)="confirmAction()"
       [label]="confirmText"
       pButton
-      [disabled]="actionType !== 'delete' && form.invalid"
-    ></button>
+      [disabled]="isDisabled"
+    >
+      <i
+        *ngIf="isLoading"
+        class="pi pi-spin pi-spinner"
+      ></i>
+    </button>
   </div>
 </p-dialog>

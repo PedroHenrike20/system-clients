@@ -14,24 +14,32 @@
       />
     </div>
   </div>
-  <div class="clients-container-management__list">
-    <app-card-information-client
-      *ngFor="let client of clients"
-      submenu="clients"
-      (onSelect)="toggleSelectionClient(client)"
-      (onDelete)="openDialog('delete', client)"
-      (onEdit)="openDialog('edit', client)"
-      [client]="client"
-    ></app-card-information-client>
-  </div>
-  <button class="button-create-client" pButton (click)="openDialog('create', null)" label="Criar cliente"></button>
-  <p-paginator
-    [rows]="reqClients.limit"
-    [totalRecords]="totalRecords"
-    (onPageChange)="onPageChange($event)"
-    [first]="(reqClients.page - 1) * reqClients.limit"
-  >
-  </p-paginator>
+  <i *ngIf="isLoading; else containerList" class="pi pi-spin pi-spinner"></i>
+  <ng-template #containerList>
+    <div class="clients-container-management__list">
+      <app-card-information-client
+        *ngFor="let client of clients"
+        submenu="clients"
+        (onSelect)="toggleSelectionClient(client)"
+        (onDelete)="openDialog('delete', client)"
+        (onEdit)="openDialog('edit', client)"
+        [client]="client"
+      ></app-card-information-client>
+    </div>
+    <button
+      class="button-create-client"
+      pButton
+      (click)="openDialog('create', null)"
+      label="Criar cliente"
+    ></button>
+    <p-paginator
+      [rows]="reqClients.limit"
+      [totalRecords]="totalRecords"
+      (onPageChange)="onPageChange($event)"
+      [first]="(reqClients.page - 1) * reqClients.limit"
+    >
+    </p-paginator>
+  </ng-template>
 </div>
 
 <app-modal-dialog
@@ -43,4 +51,5 @@
   [content]="dialogContent"
   [confirmText]="confirmButtonText"
   [actionType]="actionType"
+  [isLoadingOperation]="isLoadingOperation"
 ></app-modal-dialog>
