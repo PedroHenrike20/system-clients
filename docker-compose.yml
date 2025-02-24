@@ -8,7 +8,7 @@ services:
     ports:
       - "4200:80"
     environment:
-      - API_URL=https://boasorte.teddybackoffice.com.br/users
+      - API_URL=https://middleware-server-app.onrender.com/api/users
     networks:
       - app-network
 

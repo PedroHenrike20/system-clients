@@ -1,4 +1,4 @@
 export const environment = {
     production: true,
-    apiUrl: 'https://boasorte.teddybackoffice.com.br/users'
+    apiUrl: 'https://middleware-server-app.onrender.com/api/users'
   };
