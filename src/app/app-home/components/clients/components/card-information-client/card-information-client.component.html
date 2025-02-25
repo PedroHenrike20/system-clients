@@ -2,7 +2,7 @@
   [ngClass]="{ 'card-container__selected': isSelected }"
   class="card-container"
 >
-  <h3 [pTooltip]="client.name">{{ client.name }}</h3>
+  <h3 [pTooltip]="client.name"><span>{{ client.name }}</span></h3>
   <h4 pTooltip="{{client.salary | currency : 'BRL'}}">Salário: {{ client.salary | currency : "BRL" }}</h4>
   <h4 pTooltip="{{client.companyValuation | currency : 'BRL'}}">Empresa: {{ client.companyValuation | currency : "BRL" }}</h4>
 
