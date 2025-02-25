@@ -1,0 +1,85 @@
+<div class="header-container-app-home">
+    <div class="header-container-app-home__logo-navbutton">
+      <button
+        class="button-app-home"
+        icon="pi pi-bars"
+        pButton
+        (click)="visibleSideBar = true"
+      ></button>
+      <img [src]="'assets/images/logo.svg'" alt="Logo" />
+    </div>
+  
+    <div [ngClass]="{'submenu-container-app-home__positionInherit': !submenus[activeMenu]}" class="submenu-container-app-home">
+      <ng-container *ngFor="let submenu of submenus[activeMenu]">
+        <button (click)="onButtonClick(submenu.id)" pButton [label]="submenu.label" [ngClass]="{ 'submenu-container-app-home__submenu-item__active': menuSelected === submenu.id }" class="submenu-container-app-home__submenu-item">
+          </button>
+      </ng-container>
+      <button pButton class="submenu-container-app-home__submenu-item" label="Sair" (click)="logout()"></button>
+    </div>
+    <h3>Olá, <span>{{userName ?? 'Usuário'}}!</span></h3>
+  </div>
+  
+  <p-sidebar [(visible)]="visibleSideBar" position="left" [showCloseIcon]="false">
+    <div class="logo-container-sidebar-app-home">
+      <img [src]="'assets/images/logo.svg'" alt="Logo" />
+    </div>
+    <button
+      class="close-btn-sidebar-app-home"
+      (click)="visibleSideBar = false"
+      pButton
+    >
+      <div class="container-close-btn-app-home">
+        <i class="pi pi-arrow-left"></i>
+      </div>
+    </button>
+    <ul class="menu-list-app-home">
+      <li
+        [ngClass]="{ 'menu-list-app-home__item__active': activeMenu === 'home' }"
+        class="menu-list-app-home__item"
+        (click)="navigateTo('home')"
+      >
+        <div
+          [ngClass]="{
+            'menu-list-app-home__item-icon__active': activeMenu === 'home'
+          }"
+          class="menu-list-app-home__item-icon menu-list-app-home__item-icon__home"
+        ></div>
+        Home
+      </li>
+      <li
+        [ngClass]="{
+          'menu-list-app-home__item__active': activeMenu === 'clients'
+        }"
+        class="menu-list-app-home__item"
+        (click)="navigateTo('clients')"
+      >
+        <div
+          [ngClass]="{
+            'menu-list-app-home__item-icon__active': activeMenu === 'clients'
+          }"
+          class="menu-list-app-home__item-icon menu-list-app-home__item-icon__clients"
+        ></div>
+        Clientes
+      </li>
+      <li
+        [ngClass]="{
+          'menu-list-app-home__item__active': activeMenu === 'products'
+        }"
+        class="menu-list-app-home__item"
+        (click)="navigateTo('products')"
+      >
+        <div
+          [ngClass]="{
+            'menu-list-app-home__item-icon__active': activeMenu === 'products'
+          }"
+          class="menu-list-app-home__item-icon menu-list-app-home__item-icon__products"
+        ></div>
+        Produtos
+      </li>
+    </ul>
+  </p-sidebar>
+  
+  <div class="content-container-app-home">
+    <router-outlet></router-outlet>
+  </div>
+  

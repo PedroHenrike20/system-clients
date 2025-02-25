@@ -1,0 +1,226 @@
+.header-container-app-home {
+  padding: 26px 0px;
+  background-color: #ffffff;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  padding-right: 140px;
+
+  &__logo-navbutton {
+    display: flex;
+    flex-direction: row;
+  }
+
+  span {
+    font-weight: 700;
+    text-transform: capitalize;
+  }
+}
+
+.submenu-container-app-home {
+  display: flex;
+  flex-direction: row;
+  gap: 33px;
+
+  &__submenu-item {
+    background-color: transparent;
+    padding: 0px;
+
+    color: #000;
+    border: none;
+
+    &:active {
+      outline: none;
+      box-shadow: none;
+      border: none;
+    }
+
+    &:focus {
+      outline: none;
+      box-shadow: none;
+      border: none;
+    }
+
+    &:hover {
+      background-color: transparent;
+      color: #ec6724;
+      text-decoration: underline;
+    }
+
+    &__active {
+      color: #ec6724;
+      text-decoration: underline;
+    }
+  }
+}
+
+.button-app-home {
+  background-color: transparent !important;
+  color: gray !important;
+  border: none !important;
+  margin: 0px 40px;
+
+  &:active {
+    outline: none;
+    box-shadow: none;
+    border: none;
+  }
+}
+
+.content-container-app-home {
+  height: 80vh;
+  overflow: auto;
+}
+
+.logo-container-sidebar-app-home {
+  background-color: #292929;
+  padding: 40px 80px;
+}
+
+.container-close-btn-app-home {
+  background-color: #fff;
+  border-radius: 50%;
+  color: #000 !important;
+  border: none !important;
+  width: 20px;
+  height: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.close-btn-sidebar-app-home {
+  position: fixed;
+  top: 100px;
+  left: 295px;
+  z-index: 1000;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  padding: 14px;
+
+  background-color: #1f1f1f;
+
+  &:hover {
+    background-color: #1f1f1f;
+    color: #000;
+  }
+
+  &:active {
+    outline: none;
+    box-shadow: none;
+    border: none;
+  }
+
+  i {
+    font-size: 12px !important;
+  }
+}
+
+.menu-list-app-home {
+  margin: 48px 0px 0px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  color: #141414;
+  font-family: "Geologica Cursive", sans-serif;
+
+  &__item {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 12px 14px;
+    cursor: pointer;
+
+    font-weight: 600;
+    font-size: 1rem;
+
+    &__active {
+      color: #ee7d46;
+      border-right: 3px solid #ee7d46;
+    }
+  }
+
+  &__item-icon {
+    width: 20px;
+    height: 20px;
+    background-color: #0f0f0f;
+    mask-size: cover;
+    margin-right: 16px;
+
+    &__active {
+      background-color: #ee7d46;
+    }
+
+    &__home {
+      mask-image: url("/assets/icons/icon-home.svg");
+      -webkit-mask-image: url("/assets/icons/icon-home.svg");
+    }
+
+    &__clients {
+      mask-image: url("/assets/icons/icon-clients.svg");
+      -webkit-mask-image: url("/assets/icons/icon-clients.svg");
+    }
+
+    &__products {
+      mask-image: url("/assets/icons/icon-products.svg");
+      -webkit-mask-image: url("/assets/icons/icon-products.svg");
+    }
+  }
+}
+
+@media (max-width: 800px) {
+  .header-container-app-home {
+    width: 100%;
+    padding-right: 20px;
+  }
+}
+
+@media (max-width: 670px) {
+  .submenu-container-app-home {
+    position: fixed;
+    top: 120px;
+    padding: 0px 20px;
+
+    &__positionInherit {
+      position: inherit;
+    }
+  }
+
+  .button-app-home {
+    margin: 0px;
+  }
+
+  .content-container-app-home {
+    margin-top: 60px;
+    padding-bottom: 60px;
+  }
+}
+
+:host ::ng-deep .submenu-container-app-home__submenu-item .p-button-label {
+  font-size: 1rem !important;
+  font-weight: 400 !important;
+  font-family: "Inter", sans-serif !important;
+}
+
+:host ::ng-deep .button-app-home .p-button-icon {
+  font-size: 24px !important;
+}
+
+::ng-deep .p-sidebar .p-sidebar-header {
+  padding: 0px !important;
+}
+
+::ng-deep .p-sidebar .p-sidebar-content {
+  padding: 0px !important;
+}
+
+::ng-deep .p-sidebar-left {
+  border-top-right-radius: 20px !important;
+  overflow: hidden;
+  background-color: #ffffff;
+  &.p-sidebar-close {
+    display: none;
+  }
+}

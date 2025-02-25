@@ -1,0 +1,10 @@
+.clients-container {
+    padding: 30px 140px;
+  }
+  
+  @media (max-width: 670px) {
+    .clients-container {
+      width: 100%;
+      padding: 0px 20px 20px 20px;
+    }
+  }
