@@ -28,8 +28,10 @@ a {
   text-decoration: none;
 }
 
-
-h1, h2, h3, h4{
+h1,
+h2,
+h3,
+h4 {
   font-family: "Inter", sans-serif;
 }
 
@@ -43,22 +45,42 @@ h2 {
   font-weight: 700;
 }
 
-
 h3 {
   font-weight: 400;
   font-size: 1rem;
-  
 }
 
-h4{
+h4 {
   font-size: 0.875rem;
   font-weight: 400;
 }
-
 
 ::ng-deep .p-inputtext::placeholder {
   color: #aaaaaa;
   font-weight: 400;
   font-family: "Inter", sans-serif;
   font-size: 1rem;
+}
+
+.p-toast-message {
+  font-family: "Inter", sans-serif;
+  font-size: 0.875rem;
+  font-weight: 400;
+}
+
+
+
+.p-toast-summary {
+  font-family: "Inter", sans-serif;
+  font-size: 1rem !important;
+  font-weight: 700 !important; 
+}
+
+@media (max-width: 480px) {
+  .p-toast-message {
+    padding: 6px !important;
+  }
+  .p-toast {
+    max-width: 90vw !important; 
+  }
 }
