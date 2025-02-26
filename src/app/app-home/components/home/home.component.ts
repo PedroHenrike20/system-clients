@@ -25,7 +25,7 @@ userName: string | null;
         const cleanUrl = event.url.split('?')[0].split('#')[0];
 
         const segments = cleanUrl.split('/');
-        this.activeMenu = segments.length > 2 ? segments[2] : 'home';
+        this.activeMenu = segments.length > 2 ? segments[2] : 'welcome';
       }
     });
   }
@@ -44,10 +44,6 @@ userName: string | null;
   navigateTo(menu: string) {
     this.activeMenu = menu;
     this.visibleSideBar = false;
-    if (menu !== 'home') {
-      this.router.navigate([`/home/${menu}`]);
-    } else {
-      this.router.navigate(['/home']);
-    }
+    this.router.navigate([`/home/${menu}`]);
   }
 }

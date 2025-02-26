@@ -69,6 +69,10 @@
   }
 }
 
+::ng-deep .pi.pi-spin {
+  animation-duration: 1.2s !important; 
+}
+
 ::ng-deep .p-dropdown-label {
   line-height: 16px !important;
   padding: 4px 8px !important;

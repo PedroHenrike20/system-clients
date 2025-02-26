@@ -1,4 +1,4 @@
-<div class="header-container-app-home">
+<div [ngClass]="{'header-container-app-home__positionInherit': !submenus[activeMenu]}" class="header-container-app-home">
     <div class="header-container-app-home__logo-navbutton">
       <button
         class="button-app-home"
@@ -34,13 +34,13 @@
     </button>
     <ul class="menu-list-app-home">
       <li
-        [ngClass]="{ 'menu-list-app-home__item__active': activeMenu === 'home' }"
+        [ngClass]="{ 'menu-list-app-home__item__active': activeMenu === 'welcome' }"
         class="menu-list-app-home__item"
-        (click)="navigateTo('home')"
+        (click)="navigateTo('welcome')"
       >
         <div
           [ngClass]="{
-            'menu-list-app-home__item-icon__active': activeMenu === 'home'
+            'menu-list-app-home__item-icon__active': activeMenu === 'welcome'
           }"
           class="menu-list-app-home__item-icon menu-list-app-home__item-icon__home"
         ></div>
@@ -79,7 +79,7 @@
     </ul>
   </p-sidebar>
   
-  <div class="content-container-app-home">
+  <div [ngClass]="{'content-container-app-home__margin-top-none': !submenus[activeMenu]}" class="content-container-app-home">
     <router-outlet></router-outlet>
   </div>
   

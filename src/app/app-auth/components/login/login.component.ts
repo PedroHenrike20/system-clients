@@ -22,7 +22,7 @@ export class LoginComponent {
     login(){
       if(this.loginModel.userName.trim()){
         this.authService.setUserName(this.loginModel.userName);
-        this.router.navigate(['/home']);
+        this.router.navigate(['/home/welcome']);
       }
     }
 

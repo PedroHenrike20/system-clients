@@ -178,8 +178,14 @@
 }
 
 @media (max-width: 670px) {
+  .header-container-app-home {
+    position: relative;
+    &__positionInherit {
+      position: inherit;
+    }
+  }
   .submenu-container-app-home {
-    position: fixed;
+    position: absolute;
     top: 120px;
     padding: 0px 20px;
 
@@ -194,7 +200,10 @@
 
   .content-container-app-home {
     margin-top: 60px;
-    padding-bottom: 60px;
+    
+    &__margin-top-none {
+      margin-top: 0px;
+    }
   }
 }
 
