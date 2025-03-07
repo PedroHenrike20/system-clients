@@ -10,6 +10,10 @@
   &__logo-navbutton {
     display: flex;
     flex-direction: row;
+
+    img {
+      width: 165px;
+    }
   }
 
   span {
@@ -76,6 +80,10 @@
 .logo-container-sidebar-app-home {
   background-color: #292929;
   padding: 40px 80px;
+
+  img{
+    width: 165px;
+  }
 }
 
 .container-close-btn-app-home {
