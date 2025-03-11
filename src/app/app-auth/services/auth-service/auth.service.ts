@@ -12,7 +12,10 @@ export class AuthService {
   }
   
   getUserName(): string | null {
-    return localStorage.getItem('username');
+    const name = localStorage.getItem('username');
+    const nameParts = name?.trim().split(' ');
+
+    return nameParts?.slice(0,2).join(' ')!
     
   }
 

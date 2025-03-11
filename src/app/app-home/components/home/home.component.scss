@@ -73,8 +73,9 @@
 }
 
 .content-container-app-home {
-  height: 80vh;
-  overflow: auto;
+  height: 85vh;
+  overflow-y: scroll;
+  overflow-x: hidden;
 }
 
 .logo-container-sidebar-app-home {
