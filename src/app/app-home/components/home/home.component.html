@@ -34,17 +34,17 @@
     </button>
     <ul class="menu-list-app-home">
       <li
-        [ngClass]="{ 'menu-list-app-home__item__active': activeMenu === 'welcome' }"
+        [ngClass]="{ 'menu-list-app-home__item__active': activeMenu === 'dashboard' }"
         class="menu-list-app-home__item"
-        (click)="navigateTo('welcome')"
+        (click)="navigateTo('dashboard')"
       >
         <div
           [ngClass]="{
-            'menu-list-app-home__item-icon__active': activeMenu === 'welcome'
+            'menu-list-app-home__item-icon__active': activeMenu === 'dashboard'
           }"
           class="menu-list-app-home__item-icon menu-list-app-home__item-icon__home"
         ></div>
-        Home
+        Dashboard
       </li>
       <li
         [ngClass]="{

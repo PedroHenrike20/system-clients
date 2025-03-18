@@ -1,0 +1,68 @@
+@mixin circle($gradient) {
+  width: 84px;
+  height: 84px;
+  border-radius: 50%;
+  display: flex;
+  background: $gradient;
+  align-items: center;
+  justify-content: center;
+}
+
+.header-data-container {
+  background-color: #ffffff;
+  display: flex;
+  flex-direction: row;
+  padding: 32px 50px;
+  border-radius: 30px;
+  justify-content: center;
+
+  &__item-container {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    margin-right: 56px;
+    padding-right: 56px;
+    border-right: 1px solid #f0f0f0;
+
+    &:last-child {
+      border-right: none;
+      margin-right: 0px;
+      padding-right: 0px;
+    }
+  }
+
+  &__item-container-radius-users {
+    @include circle(linear-gradient(to bottom, #ffc6a9, #fce0d2));
+  }
+
+  &__item-container-radius-money {
+    @include circle(linear-gradient(to bottom, #d3ffe7, #effff6));
+  }
+  
+  &__item-container-radius-wallet-money {
+    @include circle(linear-gradient(to bottom, #CAF1FF, #CDF4FF));
+  }
+
+  &__item-container-data {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+
+    h4 {
+      color: #acacac;
+    }
+
+    i {
+      font-size: 0.75rem;
+      font-weight: 700;
+    }
+    p {
+      span {
+        font-weight: 700;
+        color: #00ac4f;
+      }
+      font-size: 0.75rem;
+      font-family: "Inter", sans-serif;
+    }
+  }
+}

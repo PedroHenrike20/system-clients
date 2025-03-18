@@ -22,6 +22,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { PaginatorModule } from 'primeng/paginator';
 import { ToastModule } from 'primeng/toast';
 import { WelcomeComponent } from './components/welcome/welcome.component';
+import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { HeaderDataComponent } from './components/dashboard/components/header-data/header-data.component';
 
 registerLocaleData(localePt, 'pt-BR');
 
@@ -35,6 +37,8 @@ registerLocaleData(localePt, 'pt-BR');
     ClientsManagementComponent,
     ModalDialogComponent,
     WelcomeComponent,
+    DashboardComponent,
+    HeaderDataComponent,
   ],
   imports: [
     CommonModule,
