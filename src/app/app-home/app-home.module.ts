@@ -24,6 +24,11 @@ import { ToastModule } from 'primeng/toast';
 import { WelcomeComponent } from './components/welcome/welcome.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { HeaderDataComponent } from './components/dashboard/components/header-data/header-data.component';
+import { NgChartsModule } from 'ng2-charts';
+import { ChartBarDataComponent } from './components/dashboard/components/chart-bar-data/chart-bar-data.component';
+import { ChartDoughnutDataComponent } from './components/dashboard/components/chart-doughnut-data/chart-doughnut-data.component';
+import { CardInfoCustomersComponent } from './components/dashboard/components/card-info-customers/card-info-customers.component';
+import { ShortCurrencyPipe } from '../shared/pipes/short-currency/short-currency.pipe';
 
 registerLocaleData(localePt, 'pt-BR');
 
@@ -39,6 +44,10 @@ registerLocaleData(localePt, 'pt-BR');
     WelcomeComponent,
     DashboardComponent,
     HeaderDataComponent,
+    ChartBarDataComponent,
+    ChartDoughnutDataComponent,
+    CardInfoCustomersComponent,
+    ShortCurrencyPipe
   ],
   imports: [
     CommonModule,
@@ -55,6 +64,8 @@ registerLocaleData(localePt, 'pt-BR');
     ReactiveFormsModule,
     PaginatorModule,
     ToastModule,
+    NgChartsModule,
+    
   ],
   providers: [
     { provide: LOCALE_ID, useValue: 'pt-BR' },

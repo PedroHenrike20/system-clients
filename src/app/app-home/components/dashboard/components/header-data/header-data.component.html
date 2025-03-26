@@ -5,34 +5,53 @@
     </div>
     <div class="header-data-container__item-container-data">
       <h4>Total clientes</h4>
-      <h2>245</h2>
+      <h2>{{ totalClients }}</h2>
       <p>
-        <span><i class="pi pi-arrow-up"></i> 16%</span> este mês
+        <span
+          [ngClass]="{'header-data-container__item-container-data__evolutionUp': clientsEvolutionRate > 0, 'header-data-container__item-container-data__evolutionDown': clientsEvolutionRate < 0}"
+          ><i *ngIf="clientsEvolutionRate > 0" class="pi pi-arrow-up"></i>
+          <i *ngIf="clientsEvolutionRate < 0" class="pi pi-arrow-down"></i>
+          <i *ngIf="clientsEvolutionRate === 0" class="pi pi-minus"></i>
+          {{ clientsEvolutionRate | number : "1.2-2" }}%</span
+        >
+        este mês
       </p>
     </div>
   </div>
+  <div class="header-data-container__divider"></div>
   <div class="header-data-container__item-container">
     <div class="header-data-container__item-container-radius-money">
-      <img [src]="'assets/icons/icon-money-recive.svg'" alt="users" />
+      <img [src]="'assets/icons/icon-money-recive.svg'" alt="money-recive" />
     </div>
     <div class="header-data-container__item-container-data">
       <h4>Total ganho</h4>
-      <h2>R$ 24.5k</h2>
+      <h2>{{ totalGain | shortCurrency : 2 }}</h2>
       <p>
-        <span><i class="pi pi-arrow-up"></i> 16%</span> este mês
+        <span [ngClass]="{'header-data-container__item-container-data__evolutionUp': winEvolutionRate > 0, 'header-data-container__item-container-data__evolutionDown': winEvolutionRate < 0}">
+          <i *ngIf="winEvolutionRate > 0" class="pi pi-arrow-up"></i>
+          <i *ngIf="winEvolutionRate < 0" class="pi pi-arrow-down"></i>
+          <i *ngIf="winEvolutionRate === 0" class="pi pi-minus"></i> 
+          {{winEvolutionRate | number : "1.2-2"}}%
+        </span> este mês
       </p>
     </div>
   </div>
-  <div class="header-data-container__item-container header-data-container__item-container:last-child">
+  <div class="header-data-container__divider"></div>
+  <div
+    class="header-data-container__item-container"
+  >
     <div class="header-data-container__item-container-radius-wallet-money">
-        <img [src]="'assets/icons/icon-wallet-money.svg'" alt="users" />
-      </div>
-      <div class="header-data-container__item-container-data">
-        <h4>Balanço</h4>
-        <h2>R$ 24.5k</h2>
-        <p>
-          <span><i class="pi pi-arrow-up"></i> 16%</span> este mês
-        </p>
-      </div>
+      <img [src]="'assets/icons/icon-wallet-money.svg'" alt="wallet-money" />
+    </div>
+    <div class="header-data-container__item-container-data">
+      <h4>Balanço</h4>
+      <h2>{{ totalCompanyValue | shortCurrency : 2 }}</h2>
+      <p>
+        <span [ngClass]="{'header-data-container__item-container-data__evolutionUp': balanceEvolutionRate > 0, 'header-data-container__item-container-data__evolutionDown': balanceEvolutionRate < 0}"><i *ngIf="balanceEvolutionRate > 0" class="pi pi-arrow-up"></i>
+          <i *ngIf="balanceEvolutionRate < 0" class="pi pi-arrow-down"></i>
+          <i *ngIf="balanceEvolutionRate === 0" class="pi pi-minus"></i> 
+          {{winEvolutionRate | number : "1.2-2"}}%</span> este mês
+      </p>
+    </div>
   </div>
 </div>

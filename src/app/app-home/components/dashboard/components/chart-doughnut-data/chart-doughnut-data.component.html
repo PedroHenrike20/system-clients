@@ -1,0 +1,16 @@
+<div class="graph-container-doughnut">
+    <h2>Clientes</h2>
+    <h4>Clientes classificados por capital</h4>
+    <canvas
+      baseChart
+      [data]="doughnutChartData"
+      [labels]="doughnutChartData.labels"
+      [options]="doughnutChartOptions"
+      type="doughnut"
+    >
+    </canvas>
+    <div class="graph-container-doughnut__container-label">
+      {{ centerText }}
+    </div>
+  </div>
+  
