@@ -1,6 +1,8 @@
 <div class="graph-container-doughnut">
-    <h2>Clientes</h2>
-    <h4>Clientes classificados por capital</h4>
+  <h2>Classificação de clientes</h2>
+  <h4>Clientes classificados por capital</h4>
+
+  <div class="graph-container-doughnut__container-graph">
     <canvas
       baseChart
       [data]="doughnutChartData"
@@ -9,8 +11,9 @@
       type="doughnut"
     >
     </canvas>
-    <div class="graph-container-doughnut__container-label">
-      {{ centerText }}
-    </div>
   </div>
-  
+  <div class="graph-container-doughnut__container-label">
+    <h2>{{ percentageCenter | number : "1.2-2" }}%</h2>
+    <h4>({{ labelPercentageCenter }})</h4>
+  </div>
+</div>

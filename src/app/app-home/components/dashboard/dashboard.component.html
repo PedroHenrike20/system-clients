@@ -1,13 +1,17 @@
 <div class="dashboard-container">
-  <app-header-data [data]="dataClients"></app-header-data>
-  <div class="dashboard-container__row">
-    <div class="dashboard-container__row__item-graph-bar">
-      <app-chart-bar-data [data]="dataClients"></app-chart-bar-data>
-    </div>
-    <app-chart-doughnut-data></app-chart-doughnut-data>
-    <div class="dashboard-container__row__item-list-customers">
-      <app-card-info-customers></app-card-info-customers>
-    </div>
+  <div *ngIf="isLoading; else containerDash">
+    <i  class="pi pi-spin pi-spinner"></i>
   </div>
-  
+  <ng-template #containerDash>
+    <app-header-data [data]="dataClients"></app-header-data>
+    <div class="dashboard-container__row">
+      <div class="dashboard-container__row__item-graph-bar">
+        <app-chart-bar-data [data]="dataClients"></app-chart-bar-data>
+      </div>
+      <app-chart-doughnut-data [data]="dataClients"></app-chart-doughnut-data>
+      <div class="dashboard-container__row__item-list-customers">
+        <app-card-info-customers [data]="dataClients"></app-card-info-customers>
+      </div>
+    </div>
+  </ng-template>
 </div>

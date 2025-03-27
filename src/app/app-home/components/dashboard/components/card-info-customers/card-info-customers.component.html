@@ -1,3 +1,19 @@
 <div class="card-info-customers">
-    <h2>Top clientes</h2>
+  <h2>Destaques</h2>
+  <h4>Clientes top 3</h4>
+  <div class="card-info-customers__container-accordion">
+    <p-accordion>
+      <p-accordionTab
+        *ngFor="let client of topClients; let i = index"
+        header="{{ i + 1 }}º {{ client.name }}"
+      >
+        <div class="card-info-customers__container-content-accordion">
+          <h4>
+            <span>Empresa:</span> {{ client.companyValuation | shortCurrency }}
+          </h4>
+          <h4><span>Salário:</span> {{ client.salary | shortCurrency }}</h4>
+        </div>
+      </p-accordionTab>
+    </p-accordion>
+  </div>
 </div>

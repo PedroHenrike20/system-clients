@@ -24,7 +24,7 @@
       <img [src]="'assets/icons/icon-money-recive.svg'" alt="money-recive" />
     </div>
     <div class="header-data-container__item-container-data">
-      <h4>Total ganho</h4>
+      <h4>Total ganho (20%)</h4>
       <h2>{{ totalGain | shortCurrency : 2 }}</h2>
       <p>
         <span [ngClass]="{'header-data-container__item-container-data__evolutionUp': winEvolutionRate > 0, 'header-data-container__item-container-data__evolutionDown': winEvolutionRate < 0}">

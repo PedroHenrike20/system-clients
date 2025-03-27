@@ -12,6 +12,7 @@ import { ClientDTO } from '../../models/client.model';
 export class DashboardComponent implements  OnInit {
 
   dataClients: ClientDTO[] = [];
+  isLoading: boolean = false;
 
   constructor(private clientService: ClientService, private messageService: MessageService) {
   }
@@ -21,10 +22,13 @@ export class DashboardComponent implements  OnInit {
   }
 
   getAllDataClients() {
+    this.isLoading = true;
     this.clientService.getAllClients().subscribe({next: (response) => {
       this.dataClients = response;
+      this.isLoading = false;
     },
     error: (err) => {
+      this.isLoading = false;
       this.messageService.add({
         severity: 'error',
         summary: 'Erro',

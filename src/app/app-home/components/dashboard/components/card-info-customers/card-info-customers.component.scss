@@ -6,4 +6,40 @@
   background-color: #ffffff;
   border-radius: 30px;
   height: 100%;
+  
+
+  h4 {
+    color: #acacac;
+  }
+
+  &__container-accordion{
+    margin-top: 20px;
+  }
+
+  &__container-content-accordion {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+
+    h4 {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-evenly;
+      color: #000;
+    }
+
+    span {
+      font-weight: 700;
+    }
+  }
+
+  ::ng-deep
+    .p-accordion
+    .p-accordion-tab:focus-within
+    .p-accordion-header
+    .p-accordion-header-link {
+    outline: none;
+    box-shadow: none;
+    outline-offset: 0px;
+  }
 }

@@ -3,11 +3,19 @@
   display: flex;
   flex-direction: column;
   gap: 28px;
+  height: 100%;
+
+  i {
+    font-size: 2rem;
+    color: #ec6724;
+    margin: 15% 50%;
+  }
 
   &__row {
     display: flex;
     flex-direction: row;
     gap: 36px;
+    flex: 1;
 
     &__item-graph-bar {
       width: 45%;

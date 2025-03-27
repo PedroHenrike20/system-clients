@@ -29,6 +29,7 @@ import { ChartBarDataComponent } from './components/dashboard/components/chart-b
 import { ChartDoughnutDataComponent } from './components/dashboard/components/chart-doughnut-data/chart-doughnut-data.component';
 import { CardInfoCustomersComponent } from './components/dashboard/components/card-info-customers/card-info-customers.component';
 import { ShortCurrencyPipe } from '../shared/pipes/short-currency/short-currency.pipe';
+import { AccordionModule } from 'primeng/accordion';
 
 registerLocaleData(localePt, 'pt-BR');
 
@@ -65,6 +66,7 @@ registerLocaleData(localePt, 'pt-BR');
     PaginatorModule,
     ToastModule,
     NgChartsModule,
+    AccordionModule
     
   ],
   providers: [

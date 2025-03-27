@@ -114,6 +114,8 @@ export class ChartBarDataComponent implements OnChanges {
         const monthYear = `${index + 1}-${new Date().getFullYear()}`;
         return this.dataMonth[monthYear]?.profit || 0;
       });
+
+      console.log(profits);
        
       this.barChartData.datasets[0].data = profits;
     }
