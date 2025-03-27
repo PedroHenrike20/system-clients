@@ -48,8 +48,6 @@ ngOnChanges(changes: SimpleChanges): void {
     this.currentCustomerQuantity = this.clientService.calculateCustomersPerMonth(this.data, currentMonth);
     this.previousCustomerQuantity = this.clientService.calculateCustomersPerMonth(this.data, previousMonth);
 
-    console.log(this.currentCustomerQuantity, this.previousCustomerQuantity);
-
     this.calculateEvolutionRate();
     
   }
