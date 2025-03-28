@@ -1,19 +1,22 @@
-import { Component, ElementRef, Input, OnChanges, SimpleChanges, ViewChild } from '@angular/core';
-import { Chart, ChartData, ChartOptions } from 'chart.js';
+import {
+  Component,
+  Input,
+  OnChanges,
+  SimpleChanges,
+} from '@angular/core';
+import { ChartData, ChartOptions } from 'chart.js';
 import { ClientDTO } from 'src/app/app-home/models/client.model';
 
 @Component({
   selector: 'app-chart-doughnut-data',
   templateUrl: './chart-doughnut-data.component.html',
-  styleUrls: ['./chart-doughnut-data.component.scss']
+  styleUrls: ['./chart-doughnut-data.component.scss'],
 })
 export class ChartDoughnutDataComponent implements OnChanges {
-
   @Input() data: ClientDTO[] = [];
 
   public percentageCenter: number = 0;
   public labelPercentageCenter: string = '';
-
 
   public doughnutChartOptions: ChartOptions = {
     responsive: true,
@@ -23,15 +26,23 @@ export class ChartDoughnutDataComponent implements OnChanges {
         display: false,
       },
       tooltip: {
+        backgroundColor: 'rgba(0, 0, 0, 0.4)',
+        padding: 10,
+        boxPadding: 5,
         callbacks: {
           label: (tooltipItem: any) => {
             const label = tooltipItem.label;
             const value = tooltipItem.raw;
-            const percentage = tooltipItem.raw / tooltipItem.dataset.data.reduce((a: number, b: number) => a + b, 0) * 100;
-            return `${label}: ${value} clientes (${percentage.toFixed(2)}%)`;
+            const percentage =
+              (tooltipItem.raw /
+                tooltipItem.dataset.data.reduce(
+                  (a: number, b: number) => a + b,
+                  0
+                )) *
+              100;
+            return `${label}: ${value} clientes (${percentage.toFixed(2).replace('.', ',')}%)`;
           },
         },
-        
       },
     },
     events: ['mousemove', 'click', 'mouseout'],
@@ -42,7 +53,12 @@ export class ChartDoughnutDataComponent implements OnChanges {
     },
   };
   public doughnutChartData: ChartData<'doughnut'> = {
-    labels: ['Acima de 500k', 'Entre 101k e 299k', 'Entre 300k e 499k', 'Abaixo de 100k'],
+    labels: [
+      'Acima de 500k',
+      'Entre 101k e 299k',
+      'Entre 300k e 499k',
+      'Abaixo de 100k',
+    ],
     datasets: [
       {
         data: [],
@@ -55,7 +71,6 @@ export class ChartDoughnutDataComponent implements OnChanges {
   };
 
   ngOnChanges(changes: SimpleChanges): void {
-    
     if (changes['data'] && changes['data'].currentValue) {
       this.updateChartData(this.data);
     }
@@ -70,9 +85,15 @@ export class ChartDoughnutDataComponent implements OnChanges {
     clients.forEach((client) => {
       if (client.companyValuation < 100000) {
         below100k++;
-      } else if (client.companyValuation >= 100000 && client.companyValuation <= 299999) {
+      } else if (
+        client.companyValuation >= 100000 &&
+        client.companyValuation <= 299999
+      ) {
         between101kAnd299k++;
-      } else if (client.companyValuation >= 300000 && client.companyValuation <= 499999) {
+      } else if (
+        client.companyValuation >= 300000 &&
+        client.companyValuation <= 499999
+      ) {
         between300kAnd499k++;
       } else {
         above500k++;
@@ -82,8 +103,10 @@ export class ChartDoughnutDataComponent implements OnChanges {
     const totalClients = clients.length;
 
     const below100kPercentage = (below100k / totalClients) * 100;
-    const between101kAnd299kPercentage = (between101kAnd299k / totalClients) * 100;
-    const between300kAnd499kPercentage = (between300kAnd499k / totalClients) * 100;
+    const between101kAnd299kPercentage =
+      (between101kAnd299k / totalClients) * 100;
+    const between300kAnd499kPercentage =
+      (between300kAnd499k / totalClients) * 100;
     const above500kPercentage = (above500k / totalClients) * 100;
 
     const percentages = [
@@ -93,14 +116,18 @@ export class ChartDoughnutDataComponent implements OnChanges {
       { label: 'Abaixo de 100k', percentage: below100kPercentage },
     ];
 
-    const maxPercentageData = percentages.reduce((max, current) => 
+    const maxPercentageData = percentages.reduce((max, current) =>
       current.percentage > max.percentage ? current : max
     );
 
     this.percentageCenter = maxPercentageData.percentage;
     this.labelPercentageCenter = maxPercentageData.label;
 
-    this.doughnutChartData.datasets[0].data = [above500k, between101kAnd299k, between300kAnd499k, below100k];
-
+    this.doughnutChartData.datasets[0].data = [
+      above500k,
+      between101kAnd299k,
+      between300kAnd499k,
+      below100k,
+    ];
   }
 }

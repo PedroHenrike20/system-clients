@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { ChartData, ChartOptions } from 'chart.js';
 import { ClientService } from '../../services/client-service/client.service';
 import { MessageService } from 'primeng/api';
 import { ClientDTO } from '../../models/client.model';

@@ -46,8 +46,10 @@
 
 @media (max-width: 670px) {
   .graph-container-doughnut {
-    h4 {
-      font-size: 0.675rem;
+    &__container-graph {
+      h4{
+        font-size: 0.675rem;
+      }
     }
   }
 }
