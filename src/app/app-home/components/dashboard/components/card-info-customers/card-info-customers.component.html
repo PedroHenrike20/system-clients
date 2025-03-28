@@ -2,7 +2,7 @@
   <h2>Destaques</h2>
   <h4>Clientes top 3</h4>
   <div class="card-info-customers__container-accordion">
-    <p-accordion>
+    <p-accordion *ngIf="topClients.length > 0, else noClients">
       <p-accordionTab
         *ngFor="let client of topClients; let i = index"
         header="{{ i + 1 }}º {{ client.name }}"
@@ -15,5 +15,10 @@
         </div>
       </p-accordionTab>
     </p-accordion>
+    <ng-template #noClients>
+      <div class="card-info-customers__container-noclients">
+        <h4>Sem informações</h4>
+      </div>
+    </ng-template>
   </div>
 </div>

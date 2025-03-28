@@ -33,6 +33,10 @@
     }
   }
 
+  &__container-noclients {
+    justify-self: center;
+  }
+
   ::ng-deep
     .p-accordion
     .p-accordion-tab:focus-within

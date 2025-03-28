@@ -53,6 +53,10 @@ ngOnChanges(changes: SimpleChanges): void {
   }
 
   calculateEvolutionRate(): void {
+    if(this.data.length === 0) {
+      this.clientsEvolutionRate = 0;
+      return;
+    }
     if(this.previousCustomerQuantity === 0) {
       this.clientsEvolutionRate = 100;
     }else {

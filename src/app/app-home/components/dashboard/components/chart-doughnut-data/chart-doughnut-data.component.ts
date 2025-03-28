@@ -40,6 +40,9 @@ export class ChartDoughnutDataComponent implements OnChanges {
                   0
                 )) *
               100;
+              if(tooltipItem.label === 'Sem informações') {
+                return `${label}`;
+              }
             return `${label}: ${value} clientes (${percentage.toFixed(2).replace('.', ',')}%)`;
           },
         },
@@ -58,13 +61,14 @@ export class ChartDoughnutDataComponent implements OnChanges {
       'Entre 101k e 299k',
       'Entre 300k e 499k',
       'Abaixo de 100k',
+      'Sem informações',	
     ],
     datasets: [
       {
         data: [],
-        backgroundColor: ['#FF7C07', '#FE9229', '#F6AA59', '#F9DDC3'],
-        hoverBackgroundColor: ['#FF7C07', '#FE9229', '#F6AA59', '#F9DDC3'],
-        hoverBorderColor: ['#FF7C07', '#FE9229', '#F6AA59', '#F9DDC3'],
+        backgroundColor: ['#FF7C07', '#FE9229', '#F6AA59', '#F9DDC3', '#d1d1d1'],
+        hoverBackgroundColor: ['#FF7C07', '#FE9229', '#F6AA59', '#F9DDC3', '#d1d1d1'],
+        hoverBorderColor: ['#FF7C07', '#FE9229', '#F6AA59', '#F9DDC3', '#d1d1d1'],
         borderWidth: 3,
       },
     ],
@@ -101,6 +105,13 @@ export class ChartDoughnutDataComponent implements OnChanges {
     });
 
     const totalClients = clients.length;
+
+    if(totalClients === 0) {
+      this.percentageCenter = 0;
+      this.labelPercentageCenter = 'Sem informações';
+      this.doughnutChartData.datasets[0].data = [0, 0, 0, 0, 1];
+      return;
+    }
 
     const below100kPercentage = (below100k / totalClients) * 100;
     const between101kAnd299kPercentage =
