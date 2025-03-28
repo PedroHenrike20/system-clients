@@ -45,7 +45,7 @@ export class ChartBarDataComponent implements OnChanges {
         ticks: {
           display: true,
           font: {
-            weight: '700',
+            weight: 'bold',
           },
         },
       },
