@@ -1,9 +1,4 @@
-import {
-  Component,
-  Input,
-  OnChanges,
-  SimpleChanges,
-} from '@angular/core';
+import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
 import { ChartData, ChartOptions } from 'chart.js';
 import { ClientDTO } from 'src/app/app-home/models/client.model';
 
@@ -21,12 +16,21 @@ export class ChartDoughnutDataComponent implements OnChanges {
   public doughnutChartOptions: ChartOptions = {
     responsive: true,
     maintainAspectRatio: false,
+    onHover: (event, chartElement) => {
+      const hoverDiv = document.getElementById('hoverDiv') as HTMLElement;
+      if (hoverDiv) {
+        if (chartElement.length > 0) {
+          hoverDiv.style.opacity = '0.2'; 
+        } else {
+          hoverDiv.style.opacity = '1'; 
+        }
+      }
+    },
     plugins: {
       legend: {
         display: false,
       },
       tooltip: {
-        backgroundColor: 'rgba(0, 0, 0, 0.4)',
         padding: 10,
         boxPadding: 5,
         callbacks: {
@@ -40,10 +44,12 @@ export class ChartDoughnutDataComponent implements OnChanges {
                   0
                 )) *
               100;
-              if(tooltipItem.label === 'Sem informações') {
-                return `${label}`;
-              }
-            return `${label}: ${value} clientes (${percentage.toFixed(2).replace('.', ',')}%)`;
+            if (tooltipItem.label === 'Sem informações') {
+              return `${label}`;
+            }
+            return `${label}: ${value} clientes (${percentage
+              .toFixed(2)
+              .replace('.', ',')}%)`;
           },
         },
       },
@@ -61,14 +67,32 @@ export class ChartDoughnutDataComponent implements OnChanges {
       'Entre 101k e 299k',
       'Entre 300k e 499k',
       'Abaixo de 100k',
-      'Sem informações',	
+      'Sem informações',
     ],
     datasets: [
       {
         data: [],
-        backgroundColor: ['#FF7C07', '#FE9229', '#F6AA59', '#F9DDC3', '#d1d1d1'],
-        hoverBackgroundColor: ['#FF7C07', '#FE9229', '#F6AA59', '#F9DDC3', '#d1d1d1'],
-        hoverBorderColor: ['#FF7C07', '#FE9229', '#F6AA59', '#F9DDC3', '#d1d1d1'],
+        backgroundColor: [
+          '#FF7C07',
+          '#FE9229',
+          '#F6AA59',
+          '#F9DDC3',
+          '#d1d1d1',
+        ],
+        hoverBackgroundColor: [
+          '#FF7C07',
+          '#FE9229',
+          '#F6AA59',
+          '#F9DDC3',
+          '#d1d1d1',
+        ],
+        hoverBorderColor: [
+          '#FF7C07',
+          '#FE9229',
+          '#F6AA59',
+          '#F9DDC3',
+          '#d1d1d1',
+        ],
         borderWidth: 3,
       },
     ],
@@ -85,6 +109,9 @@ export class ChartDoughnutDataComponent implements OnChanges {
     let between101kAnd299k = 0;
     let between300kAnd499k = 0;
     let above500k = 0;
+
+    const canvas = document.getElementById('graphDoughnut') as HTMLElement;
+    canvas.style.zIndex = '9999';
 
     clients.forEach((client) => {
       if (client.companyValuation < 100000) {
@@ -106,7 +133,7 @@ export class ChartDoughnutDataComponent implements OnChanges {
 
     const totalClients = clients.length;
 
-    if(totalClients === 0) {
+    if (totalClients === 0) {
       this.percentageCenter = 0;
       this.labelPercentageCenter = 'Sem informações';
       this.doughnutChartData.datasets[0].data = [0, 0, 0, 0, 1];

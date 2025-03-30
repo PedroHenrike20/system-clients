@@ -4,6 +4,7 @@
 
   <div class="graph-container-doughnut__container-graph">
     <canvas
+      id="graphDoughnut"
       baseChart
       [data]="doughnutChartData"
       [labels]="doughnutChartData.labels"
@@ -12,7 +13,7 @@
     >
     </canvas>
   </div>
-  <div class="graph-container-doughnut__container-label">
+  <div id="hoverDiv" class="graph-container-doughnut__container-label">
     <h2>{{ percentageCenter | number : "1.2-2" }}%</h2>
     <h4>({{ labelPercentageCenter }})</h4>
   </div>

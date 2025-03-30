@@ -66,11 +66,11 @@ export class ClientService {
     });
   }
 
-  calculateCustomersPerMonth(clients: ClientDTO[], month: string): number {
+  groupCustomersMonth(clients: ClientDTO[], month: string): ClientDTO[] {
     return clients.filter((client) => {
       const clientMonth = new Date(client.createdAt).toISOString().slice(0, 7);
       return clientMonth === month;
-    }).length;
+    });
   }
 
   deleteClient(id: number): Observable<any> {

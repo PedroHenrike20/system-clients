@@ -50,7 +50,7 @@
         <span [ngClass]="{'header-data-container__item-container-data__evolutionUp': balanceEvolutionRate > 0, 'header-data-container__item-container-data__evolutionDown': balanceEvolutionRate < 0}"><i *ngIf="balanceEvolutionRate > 0" class="pi pi-arrow-up"></i>
           <i *ngIf="balanceEvolutionRate < 0" class="pi pi-arrow-down"></i>
           <i *ngIf="balanceEvolutionRate === 0" class="pi pi-minus"></i> 
-          {{winEvolutionRate | number : "1.2-2"}}%</span> este mês
+          {{balanceEvolutionRate | number : "1.2-2"}}%</span> este mês
       </p>
     </div>
   </div>
