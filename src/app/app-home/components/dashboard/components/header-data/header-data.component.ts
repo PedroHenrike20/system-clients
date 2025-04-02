@@ -67,7 +67,7 @@ ngOnChanges(changes: SimpleChanges): void {
     if(this.previousCustomerQuantity === 0) {
       this.clientsEvolutionRate = 100;
     }else {
-      this.clientsEvolutionRate = ((this.currentCustomerQuantity - this.previousCustomerQuantity) / this.previousCustomerQuantity) * 100;
+      this.clientsEvolutionRate = Math.abs(Math.abs(((this.currentCustomerQuantity - this.previousCustomerQuantity) / this.previousCustomerQuantity) * 100) - 100);
     }
   }
 
@@ -94,7 +94,7 @@ ngOnChanges(changes: SimpleChanges): void {
       return;
     }
 
-    this.winEvolutionRate = ((totalGainCurrentMonth - totalGainPreviousMonth) / totalGainPreviousMonth) * 100;
+    this.winEvolutionRate = Math.abs(Math.abs(((totalGainCurrentMonth - totalGainPreviousMonth) / totalGainPreviousMonth) * 100) - 100);
   }
 
   calculateEvolutionBalance(): void {
@@ -115,6 +115,6 @@ ngOnChanges(changes: SimpleChanges): void {
       return;
     }
 
-    this.balanceEvolutionRate = ((totalBalanceCurrentMonth - totalBalancePreviousMonth) / totalBalancePreviousMonth) * 100;
+    this.balanceEvolutionRate = Math.abs(Math.abs(((totalBalanceCurrentMonth - totalBalancePreviousMonth) / totalBalancePreviousMonth) * 100) - 100);
   }
 }
