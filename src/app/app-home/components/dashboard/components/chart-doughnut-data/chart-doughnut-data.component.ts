@@ -64,8 +64,8 @@ export class ChartDoughnutDataComponent implements OnChanges {
   public doughnutChartData: ChartData<'doughnut'> = {
     labels: [
       'Acima de 500k',
-      'Entre 101k e 299k',
       'Entre 300k e 499k',
+      'Entre 101k e 299k',
       'Abaixo de 100k',
       'Sem informações',
     ],
